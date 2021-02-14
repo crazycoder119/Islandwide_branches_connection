@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="jumbotron">
+        <h1>Welcome to branch Cloud (Secured)</h1>
+    </div>
+    <div align="center">
+        <h1>Go to Home</h1>
+        <a href="/secure">Home</a>
+    </div>
+    <!--  Get customer records  -->
+    <div>
+        <form name="fetch-customers" th:action="@{/services/getAllProducts}" th:formmethod="POST">
+            <button type="submit" class="btn btn-primary">products</button>
+        </form>
+    </div>
+    <div th:if="${error==null}">
+        <table class="table">
+            <thead>
+            <tr>
+                <td>id</td>
+                <td>productName</td>
+                <td>productDescription</td>
+                <td>price</td>
+                <td>kandyStockQuantity</td>
+                <td>colomboStockQuantity</td>
+                <td>galleStockQuantity</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product: ${productList}">
+                <td><span th:text="${product.id}"></span></td>
+                <td><span th:text="${product.productName}"></span></td>
+                <td><span th:text="${product.productDescription}"></span></td>
+                <td><span th:text="${product.price}"></span></td>
+                <td><span th:text="${product.kandyStockQuantity}"></span></td>
+                <td><span th:text="${product.colomboStockQuantity}"></span></td>
+                <td><span th:text="${product.galleStockQuantity}"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:unless="${error==null}">
+        <table class="table">
+            <thead>
+            <tr>
+                <td>Status code</td>
+                <td>Error</td>
+            </tr>
+            </thead>
+            <tr>
+                <td><span th:text="${error.statusCode}"></span></td>
+                <td><span th:text="${error.body}"></span></td>
+            </tr>
+        </table>
+    </div>
+
+    <div align="center">
+        <h1>Add Product</h1>
+        <a href="/addProduct">Add Product</a>
+    </div>
+
+    <div align="center">
+        <h1>Update Colombo Stock</h1>
+        <a href="/updateColomboStock">Update Colombo Stock</a>
+    </div>
+    <div align="center">
+        <h1>Update Kandy Stock</h1>
+        <a href="/updateKandyStock">Update Kandy Stock</a>
+    </div>
+    <div align="center">
+        <h1>Update Galle Stock</h1>
+        <a href="/updateGalleStock">Update Galle Stock</a>
+    </div>
+
+
+</div>
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

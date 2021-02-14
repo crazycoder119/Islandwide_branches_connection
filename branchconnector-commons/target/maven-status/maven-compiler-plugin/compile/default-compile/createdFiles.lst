@@ -1,0 +1,5 @@
+com\chandima\branchconnector\commons\model\deliveryservice\Delivery.class
+com\chandima\branchconnector\commons\model\orderservice\Order.class
+com\chandima\branchconnector\commons\model\productservice\Product.class
+com\chandima\branchconnector\commons\model\paymentservice\Payment.class
+com\chandima\branchconnector\commons\model\customerservice\Customer.class
