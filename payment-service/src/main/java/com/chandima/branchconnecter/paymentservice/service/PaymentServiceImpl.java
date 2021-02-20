@@ -35,19 +35,27 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public Payment updatePaymentByOrderID(Payment payment) {
         Payment existPayment = getPaymentByOrderID(payment.getOrderID());
+        System.out.println(payment.getOrderID());
+        System.out.println(existPayment);
+
         if(existPayment!=null){
+            System.out.println(payment.getOrderCost());
             if(payment.getOrderCost()!=null){
                 existPayment.setOrderCost(payment.getOrderCost());
             }
+            System.out.println(payment.getDeliveryCost());
             if(payment.getDeliveryCost()!=null){
                 existPayment.setDeliveryCost(payment.getDeliveryCost());
             }
+            System.out.println(payment.getTotalCost());
             if (payment.getTotalCost()!=null){
                 existPayment.setTotalCost(payment.getTotalCost());
             }
+            System.out.println(payment.getPayedAmount());
             if(payment.getPayedAmount()!=null){
                 existPayment.setPayedAmount(existPayment.getPayedAmount().add(payment.getPayedAmount()));
             }
+
             existPayment.setTotalCost(payment.getTotalCost());
             existPayment.setBalance(existPayment.getTotalCost().subtract(existPayment.getPayedAmount()));
             return paymentServiceRepository.save(existPayment);
@@ -63,6 +71,11 @@ public class PaymentServiceImpl implements PaymentService {
             return existPayment;
         }
         return null;
+    }
+
+    @Override
+    public Payment addInitialPayment(Payment payment) {
+        return paymentServiceRepository.save(payment);
     }
 
     private Payment getPaymentByID(int id){

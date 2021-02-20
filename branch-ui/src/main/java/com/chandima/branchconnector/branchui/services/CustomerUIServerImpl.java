@@ -8,6 +8,7 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
@@ -47,8 +48,12 @@ public class CustomerUIServerImpl implements CustomerUIServer {
                 new HttpEntity<String>(customerJsonObject.toString(), httpHeaders);
         try {
             Customer checkCustomer = restTemplate.postForObject("http://customerservice/services/addCustomer", request, Customer.class);
-            model.addAttribute("customer", checkCustomer);
-
+            System.out.println(checkCustomer);
+            if (checkCustomer!=null) {
+                model.addAttribute("customerupdates", checkCustomer);
+            }else {
+                throw new HttpServerErrorException(HttpStatus.UNPROCESSABLE_ENTITY, "check the id possibly there already customer exists with the id go to view customers");
+            }
         } catch (HttpStatusCodeException e) {
             ResponseEntity responseEntity = ResponseEntity.status(e.getRawStatusCode()).headers(e.getResponseHeaders()).body(e.getResponseBodyAsString());
             model.addAttribute("error", responseEntity);

@@ -8,6 +8,7 @@ import java.math.BigInteger;
 @Table(name = "payments")
 public class Payment {
     @Id
+    @GeneratedValue
     int id;
 
     int orderID;

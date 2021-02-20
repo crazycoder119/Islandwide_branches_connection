@@ -7,50 +7,331 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        h1 {text-align: center;}
+        p {text-align: center;}
+        div {text-align: center;}
+        button {
+            background-color:#FFFFFF;
+            opacity: 0.5;
+            color: #000000;
+        }
+        html {
+  height: 100%;
+}
+body {
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+  background: linear-gradient(#141e30, #243b55);
+}
 
-    <title>Hello, world!</title>
+.login-box {
+  left: 70%;
+  width: 500px;
+  padding: 40px;
+  transform: translate(50%, 0%);
+  background: rgba(0,0,0,.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+}
+
+.login-box-alter {
+  left: 70%;
+  width: 500px;
+  padding: 30px;
+  transform: translate(50%, 0%);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+}
+
+.login-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+.login-box .user-box label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 0px 0;
+  font-size: 12px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.login-box .user-box input:focus ~ label
+ {
+  top: -20px;
+  left: 0;
+  color: #03e9f4;
+  font-size: 12px;
+}
+
+.login-box form a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #03e9f4;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 40px;
+  letter-spacing: 4px
+}
+
+.login-box-alter  a {
+  position: relative;
+  display: inline-block;
+  padding: 5px 10px;
+  color: #03e9f4;
+  font-size: 18px;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 10px;
+  letter-spacing: 4px
+}
+
+.login-box a:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;
+}
+.login-box-alter a:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4,
+              0 0 100px #03e9f4;
+}
+
+.login-box a span {
+  position: absolute;
+  display: block;
+}
+
+.login-box a span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #03e9f4);
+  animation: btn-anim1 1s linear infinite;
+}
+
+@keyframes btn-anim1 {
+  0% {
+    left: -100%;
+  }
+  50%,100% {
+    left: 100%;
+  }
+}
+
+.login-box a span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #03e9f4);
+  animation: btn-anim2 1s linear infinite;
+  animation-delay: .25s
+}
+
+@keyframes btn-anim2 {
+  0% {
+    top: -100%;
+  }
+  50%,100% {
+    top: 100%;
+  }
+}
+
+.login-box a span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #03e9f4);
+  animation: btn-anim3 1s linear infinite;
+  animation-delay: .5s
+}
+
+@keyframes btn-anim3 {
+  0% {
+    right: -100%;
+  }
+  50%,100% {
+    right: 100%;
+  }
+}
+
+.login-box a span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #03e9f4);
+  animation: btn-anim4 1s linear infinite;
+  animation-delay: .75s
+}
+
+@keyframes btn-anim4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,100% {
+    bottom: 100%;
+  }
+}
+
+    </style>
+    <!--     <link rel="stylesheet" href="css/addcustomer.css"> -->
+    <!--     <link rel="stylesheet" href="test.css"> -->
+    <title>ALPHA OPERATIONS</title>
 </head>
 <body>
 
 <div class="container">
 
     <div class="jumbotron">
-        <h1>Welcome to branch Cloud (Secured)</h1>
+        <h1>Welcome to customer operation management center</h1>
     </div>
-    <div align="center">
-        <h1>Go to customer details</h1>
-        <a href="/secure">Home</a>
-    </div>
-
-    <div align="center">
-        <h1>Customer Registration</h1>
-        <form  name="add-customers" th:action="@{/services/addCustomer}" method="post" th:object="${customer}">
-
-            <label>id:</label>
-            <input type="number" th:field="*{id}" /><br/>
-
-            <label>customerName:</label>
-            <input type="text" th:field="*{customerName}" /><br/>
-
-            <label>customerAddress:</label>
-            <input type="text" th:field="*{customerAddress}" /><br/>
-
-            <label>customerEmail:</label>
-            <input type="text" th:field="*{customerEmail}" /><br/>
-
-            <label>customerTelephone:</label>
-            <input type="text" th:field="*{customerTelephone}" /><br/>
-
-            <button type="submit" value="Add!">Register</button>
-        </form>
+    <div class="jumbotron">
+        <img src="https://4.img-dpreview.com/files/p/articles/1201388129/Screen_Shot_2019-07-15_at_6.06.49_PM.jpeg" width="1000" height="400">
     </div>
 
+    <div class="jumbotron" th:if="${error==null and customerupdates==null}">
+        <div class="login-box">
+            <h2>Customer Registration</h2>
+            <form  name="add-customers" th:action="@{/services/addCustomer}" method="post" th:object="${customer}" >
+                <div class="user-box">
+                    <input id="text1" type="number" th:field="*{id}" required /><br/>
+                    <label>id:</label>
+                </div>
+                <div class="user-box">
+                    <input id="text2" type="text" th:field="*{customerName}"  required/><br/>
+                    <label>customerName:</label>
+                </div>
+                <div class="user-box">
+                    <input id="text3" type="text" th:field="*{customerAddress}" required/><br/>
+                    <label>customerAddress:</label>
+                </div>
+                <div class="user-box">
+                    <input id="text4" type="email" th:field="*{customerEmail}" required/><br/>
+                    <label>customerEmail:</label>
+                </div>
+                <div class="user-box">
+                    <input id="text5" type="tel" th:field="*{customerTelephone}" required/><br/>
+                    <label>customerTelephone:</label>
+                </div>
+                <a>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <button type="submit" value="Add!" onclick="clearText()">Register</button>
+                </a>
+            </form>
+        </div>
+    </div>
+
+    <div class="jumbotron" th:if="${error==null and customerupdates!=null}">
+        <h3 style="text-align:left">Customer details</h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <td>id</td>
+                <td>customerName</td>
+                <td>customerAddress</td>
+                <td>customerEmail</td>
+                <td>customerTelephone</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><span th:text="${customerupdates.id}"></span></td>
+                <td><span th:text="${customerupdates.customerName}"></span></td>
+                <td><span th:text="${customerupdates.customerAddress}"></span></td>
+                <td><span th:text="${customerupdates.customerEmail}"></span></td>
+                <td><span th:text="${customerupdates.customerTelephone}"></span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div >
+
+    <div class="jumbotron" th:unless="${error==null}">
+        <h3 style="text-align:left">Operation status</h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <td>Status code</td>
+                <td>Error</td>
+            </tr>
+            </thead>
+            <tr>
+                <td><span th:text="${error.statusCode}"></span></td>
+                <td><span th:text="${error.body}"></span></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="jumbotron" align="center">
+        <div class="login-box-alter">
+            <h3>Go to APLPHA Home</h3>
+            <a href="/secure">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Home
+            </a>
+        </div>
+    </div>
 
 </div>
 
 
 
 <!-- Optional JavaScript -->
+<script>
+<!--    function clearText()-->
+<!--{-->
+<!--    document.getElementById('text1').value = "";-->
+<!--    document.getElementById('text2').value = "";-->
+<!--    document.getElementById('text3').value = "";-->
+<!--    document.getElementById('text4').value = "";-->
+<!--    document.getElementById('text5').value = "";-->
+<!--}-->
+</script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

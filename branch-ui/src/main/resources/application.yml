@@ -1,3 +1,5 @@
+logging:
+  file: log/ui_service.log
 security:
   oauth2:
     client:

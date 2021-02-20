@@ -1,26 +1,20 @@
 package com.chandima.branchconnector.branchui.controller;
 
-import com.chandima.branchconnector.branchui.config.AccessToken;
-import com.chandima.branchconnector.branchui.services.CustomerUIServer;
-import com.chandima.branchconnector.branchui.services.DeliveryUIServer;
-import com.chandima.branchconnector.branchui.services.OrderUIServer;
-import com.chandima.branchconnector.branchui.services.ProductUIServer;
+import com.chandima.branchconnector.branchui.services.*;
 import com.chandima.branchconnector.commons.model.customerservice.Customer;
 import com.chandima.branchconnector.commons.model.deliveryservice.Delivery;
 import com.chandima.branchconnector.commons.model.orderservice.Order;
+import com.chandima.branchconnector.commons.model.paymentservice.Payment;
 import com.chandima.branchconnector.commons.model.productservice.Product;
-import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.http.*;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
 
@@ -29,6 +23,7 @@ import java.util.ArrayList;
 @Controller
 @EnableOAuth2Sso
 public class UIController extends WebSecurityConfigurerAdapter {
+
     @LoadBalanced
     @Autowired
     RestTemplate restTemplate;
@@ -44,6 +39,9 @@ public class UIController extends WebSecurityConfigurerAdapter {
 
     @Autowired
     OrderUIServer orderUIServer;
+
+    @Autowired
+    PaymentUIServer paymentUIServer;
 
 
     @Override
@@ -104,6 +102,18 @@ public class UIController extends WebSecurityConfigurerAdapter {
         model.addAttribute("order", new Order());
         return "addOrder";
     }
+    @RequestMapping(value = "/getPayment")
+    public String getPaymentDetailsUI(Model model){
+        model.addAttribute("payment", new Payment());
+        return "payments";
+    }
+
+    @RequestMapping(value = "/addPayment")
+    public String addPaymentUI(Model model){
+        model.addAttribute("payment", new Payment());
+        return "addPayment";
+    }
+
 
     @RequestMapping(value = "/updateColomboStock")
     public String updateColomboStock(Model model){
@@ -190,4 +200,15 @@ public class UIController extends WebSecurityConfigurerAdapter {
         return "addOrder";
     }
 
+    //Payment details service
+    @RequestMapping(value = "/services/getPayment")
+    public String getPayment(@ModelAttribute Payment payment, Model model){
+        model = paymentUIServer.getPayment(payment, model);
+        return "payments";
+    }
+    @RequestMapping(value = "/services/addPayment")
+    public String addPayment(@ModelAttribute Payment payment,Model model){
+        model = paymentUIServer.addPayment(payment, model);
+        return "addPayment";
+    }
 }

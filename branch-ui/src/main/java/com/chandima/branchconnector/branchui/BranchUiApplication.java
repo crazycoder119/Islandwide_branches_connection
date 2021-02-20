@@ -14,9 +14,10 @@ public class BranchUiApplication {
 		DeliveryUIServerImpl deliveryUIServer = new DeliveryUIServerImpl();
 		OrderUIServerImpl orderUIServer = new OrderUIServerImpl();
 		ProductUIServerImpl productUIServer = new ProductUIServerImpl();
+		PaymentUIServerImpl paymentUIServer = new PaymentUIServerImpl();
 		deliveryUIServer.setDelivery(orderUIServer);
-		orderUIServer.setOrder(customerUIServer,productUIServer);
-
+		orderUIServer.setOrder(customerUIServer,productUIServer,paymentUIServer);
+		paymentUIServer.setDelivery(orderUIServer, deliveryUIServer);
 		SpringApplication.run(BranchUiApplication.class, args);
 	}
 
